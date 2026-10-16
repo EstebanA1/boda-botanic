@@ -33,18 +33,17 @@ rsvpForm?.addEventListener('submit', (event) => {
 });
 
 const gallerySourcePhotos = [
-  { src: 'assets/novios/01.webp', width: 1350, height: 1800 },
-  { src: 'assets/novios/02.webp', width: 1350, height: 1800 },
-  { src: 'assets/novios/03.webp', width: 1350, height: 1800 },
-  { src: 'assets/novios/04.webp', width: 1013, height: 1800 },
-  { src: 'assets/novios/05.webp', width: 1350, height: 1800 },
-  { src: 'assets/novios/06.webp', width: 1800, height: 1350 },
-  { src: 'assets/novios/07.webp', width: 1280, height: 960 },
-  { src: 'assets/novios/08.webp', width: 1600, height: 1200 },
-  { src: 'assets/novios/09.webp', width: 1350, height: 1800 },
-  { src: 'assets/novios/10.webp', width: 1800, height: 1350 },
-  { src: 'assets/novios/11.webp', width: 1350, height: 1800 },
-  { src: 'assets/novios/12.webp', width: 1350, height: 1800 }
+  { src: 'assets/novios/01.webp', width: 1200, height: 1600 },
+  { src: 'assets/novios/02.webp', width: 1200, height: 1600 },
+  { src: 'assets/novios/03.webp', width: 1200, height: 1600 },
+  { src: 'assets/novios/04.webp', width: 900, height: 1600 },
+  { src: 'assets/novios/05.webp', width: 1200, height: 1600 },
+  { src: 'assets/novios/06.webp', width: 1200, height: 900 },
+  { src: 'assets/novios/07.webp', width: 1200, height: 900 },
+  { src: 'assets/novios/08.webp', width: 1200, height: 900 },
+  { src: 'assets/novios/10.webp', width: 1200, height: 900 },
+  { src: 'assets/novios/11.webp', width: 1200, height: 1600 },
+  { src: 'assets/novios/12.webp', width: 1200, height: 1600 }
 ];
 
 const galleryScroll = document.querySelector('[data-gallery-scroll]');
