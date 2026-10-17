@@ -17,6 +17,65 @@ function updateCountdown() {
 updateCountdown();
 window.setInterval(updateCountdown, 1000);
 
+const backgroundMusic = document.querySelector('#background-music');
+const musicToggle = document.querySelector('.music-toggle');
+let musicStartedByGesture = false;
+let musicStartRequest;
+
+function updateMusicToggle() {
+  if (!backgroundMusic || !musicToggle) return;
+  const isPlaying = !backgroundMusic.paused && !backgroundMusic.ended;
+  musicToggle.classList.toggle('is-playing', isPlaying);
+  musicToggle.setAttribute('aria-pressed', String(isPlaying));
+  const label = isPlaying ? 'Pausar música' : 'Reproducir música';
+  musicToggle.setAttribute('aria-label', label);
+  musicToggle.title = label;
+}
+
+function removeMusicStartListeners() {
+  document.removeEventListener('pointerdown', startMusicOnFirstInteraction, true);
+  document.removeEventListener('click', startMusicOnFirstInteraction, true);
+  document.removeEventListener('keydown', startMusicOnFirstInteraction, true);
+  window.removeEventListener('scroll', startMusicOnFirstInteraction);
+}
+
+function startMusic() {
+  if (!backgroundMusic || musicStartedByGesture || !backgroundMusic.paused || musicStartRequest) return;
+  musicStartRequest = backgroundMusic.play()
+    .then(() => {
+      musicStartedByGesture = true;
+      removeMusicStartListeners();
+      updateMusicToggle();
+    })
+    .catch(() => {})
+    .finally(() => {
+      musicStartRequest = undefined;
+    });
+}
+
+function startMusicOnFirstInteraction(event) {
+  if (event?.target && musicToggle?.contains(event.target)) return;
+  if (event?.type === 'keydown' && !['ArrowDown', 'PageDown', ' ', 'Spacebar'].includes(event.key)) return;
+  startMusic();
+}
+
+document.addEventListener('pointerdown', startMusicOnFirstInteraction, { capture: true, passive: true });
+document.addEventListener('click', startMusicOnFirstInteraction, true);
+document.addEventListener('keydown', startMusicOnFirstInteraction, true);
+window.addEventListener('scroll', startMusicOnFirstInteraction, { passive: true });
+
+musicToggle?.addEventListener('click', () => {
+  if (backgroundMusic?.paused) {
+    startMusic();
+  } else {
+    backgroundMusic?.pause();
+  }
+});
+backgroundMusic?.addEventListener('play', updateMusicToggle);
+backgroundMusic?.addEventListener('pause', updateMusicToggle);
+backgroundMusic?.addEventListener('ended', updateMusicToggle);
+updateMusicToggle();
+
 const rsvpForm = document.querySelector('[data-rsvp-form]');
 rsvpForm?.addEventListener('submit', (event) => {
   event.preventDefault();
@@ -37,13 +96,12 @@ const gallerySourcePhotos = [
   { src: 'assets/novios/02.webp', width: 1200, height: 1600 },
   { src: 'assets/novios/03.webp', width: 1200, height: 1600 },
   { src: 'assets/novios/04.webp', width: 900, height: 1600 },
+  { src: 'assets/novios/12.webp', width: 1200, height: 1600 },
   { src: 'assets/novios/05.webp', width: 1200, height: 1600 },
   { src: 'assets/novios/06.webp', width: 1200, height: 900 },
   { src: 'assets/novios/07.webp', width: 1200, height: 900 },
   { src: 'assets/novios/08.webp', width: 1200, height: 900 },
-  { src: 'assets/novios/10.webp', width: 1200, height: 900 },
-  { src: 'assets/novios/11.webp', width: 1200, height: 1600 },
-  { src: 'assets/novios/12.webp', width: 1200, height: 1600 }
+  { src: 'assets/novios/10.webp', width: 1200, height: 900 }
 ];
 
 const galleryScroll = document.querySelector('[data-gallery-scroll]');

@@ -13,10 +13,11 @@ Abre `index.html` en un navegador. Para publicarla en GitHub Pages, configura Pa
 - `script.js`: cuenta regresiva y galería fotográfica con carga progresiva al desplazarse.
 - `assets/elementos/`: adornos WebP usados por el diseño. Consulta su [README](assets/elementos/README.md).
 - `assets/novios/`: fotos WebP de la invitación.
+- `assets/cancion/disfruto.mp3`: música de fondo, se activa con el primer toque o desplazamiento y se controla con el botón de la esquina inferior derecha.
 
 ## Fotografías
 
-La galería muestra 11 fotos, en orden: `01.webp` a `08.webp`, seguidas por `10.webp`, `11.webp` y `12.webp`. `foto-destacada.webp` se usa en el marco del itinerario y `foto-final.webp` ocupa el fondo del cierre.
+La galería muestra 10 fotos en este orden: `01.webp` a `04.webp`, luego `12.webp`, después `05.webp` a `08.webp` y finalmente `10.webp`. La foto `11.webp` se reserva para la portada. `foto-destacada.webp` se usa en el marco del itinerario y `foto-final.webp` ocupa el fondo del cierre.
 
 Las fotos de la galería se cargan a medida que se acerca su turno y se liberan cuando quedan lejos del área visible. Las demás imágenes de la página usan carga diferida del navegador.
 

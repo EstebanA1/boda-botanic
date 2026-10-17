@@ -55,3 +55,14 @@ img{display:block;max-width:100%}
 .closing .eyebrow,.closing h2,.closing p{color:#fffaf7;text-shadow:0 1px 10px #1d101aaa}
 .closing .eyebrow{font-size:16px}.closing h2{font-size:clamp(40px,11vw,54px)}.closing p{max-width:320px}
 @media(min-width:700px){.closing.section{margin-right:-40px;margin-left:-40px}}
+
+/* Distancia de los iconos del itinerario hacia el texto: aumenta el valor para acercarlos. */
+.schedule__timeline{--schedule-icon-nudge:12px}
+.schedule__event--left .schedule__icon{transform:translateX(var(--schedule-icon-nudge))}
+.schedule__event--right .schedule__icon{transform:translateX(calc(-1 * var(--schedule-icon-nudge)))}
+
+.background-music{display:none}
+.music-toggle{position:fixed;z-index:20;right:18px;bottom:calc(18px + env(safe-area-inset-bottom,0px));display:grid;place-items:center;width:48px;height:48px;padding:0;border:1px solid #a7656c55;border-radius:50%;background:#fbf9f5eF;color:#725b60;box-shadow:0 3px 14px #342d2530;cursor:pointer;transition:color .2s ease,transform .2s ease,background-color .2s ease}
+.music-toggle svg{width:23px;height:23px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.music-toggle.is-playing{color:#a7656c;background:#fbf9f5f5;transform:scale(1.1)}
+.music-toggle:focus-visible{outline:2px solid #a7656c;outline-offset:3px}
