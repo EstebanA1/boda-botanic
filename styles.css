@@ -66,3 +66,6 @@ img{display:block;max-width:100%}
 .music-toggle svg{width:23px;height:23px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
 .music-toggle.is-playing{color:#a7656c;background:#fbf9f5f5;transform:scale(1.1)}
 .music-toggle:focus-visible{outline:2px solid #a7656c;outline-offset:3px}
+
+/* Baja el bloque de ceremonia para equilibrar el espacio bajo las flores. */
+.event{padding-top:130px}
